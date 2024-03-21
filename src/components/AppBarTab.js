@@ -1,13 +1,8 @@
 import { Pressable, StyleSheet } from "react-native";
+import { Link } from "react-router-native";
 import Text from "./Text";
 
-import theme from "../theme";
-
 const styles = StyleSheet.create({
-  text: {
-    color: theme.colors.textWhite,
-    fontWeight: "bold",
-  },
   pressable: {
     marginRight: 12,
   },
@@ -15,8 +10,10 @@ const styles = StyleSheet.create({
 
 const AppBarTap = (props) => {
   return (
-    <Pressable style={styles.pressable} onPress={() => console.log("pressed")}>
-      <Text style={styles.text} {...props} />
+    <Pressable style={styles.pressable}>
+      <Link to={props.to}>
+        <Text style={styles.text} {...props} />
+      </Link>
     </Pressable>
   );
 };

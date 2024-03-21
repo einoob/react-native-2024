@@ -1,5 +1,7 @@
 import { StyleSheet, View } from "react-native";
+import { Route, Routes, Navigate } from "react-router-native";
 import RepositoryList from "./RepositoryList";
+import SignInView from "./SignInView";
 import AppBar from "./AppBar";
 
 const styles = StyleSheet.create({
@@ -11,12 +13,14 @@ const styles = StyleSheet.create({
 
 const Main = () => {
   return (
-    <>
-    <AppBar />
-      <View style={styles.container}>
-        <RepositoryList />
-      </View>
-    </>
+    <View style={styles.container}>
+      <AppBar />
+      <Routes>
+        <Route exact path="/" element={<RepositoryList />} />
+        <Route path="/signin" element={<SignInView />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </View>
   );
 };
 
